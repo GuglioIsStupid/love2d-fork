@@ -53,7 +53,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        platform: [Win32, x64]
+        platform: [x64]
     steps:
     - name: Clone Megasource
       uses: actions/checkout@v3
