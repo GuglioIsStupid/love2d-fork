@@ -1771,6 +1771,7 @@ set(LOVE_3P
 	love_3p_lodepng
 	love_3p_luasocket
 	love_3p_lua53
+	love_3p_luahttps
 	love_3p_lz4
 	love_3p_noise1234
 	love_3p_physfs
