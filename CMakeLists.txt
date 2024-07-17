@@ -1567,7 +1567,40 @@ set(LOVE_SRC_3P_LUA53
 )
 
 add_library(love_3p_lua53 ${LOVE_SRC_3P_LUA53})
+
 target_link_libraries(love_3p_lua53 ${LOVE_LUA_LIBRARY})
+
+#
+# Lua HTTPS
+#
+
+add_library(love_3p_luahttps
+	# These are platform-dependent but have ifdef guards to make sure they only
+	# compile on supported platforms.
+	src/libraries/luahttps/src/android/AndroidClient.cpp
+	src/libraries/luahttps/src/android/AndroidClient.h
+	src/libraries/luahttps/src/common/config.h
+	src/libraries/luahttps/src/common/Connection.h
+	src/libraries/luahttps/src/common/ConnectionClient.h
+	src/libraries/luahttps/src/common/HTTPRequest.cpp
+	src/libraries/luahttps/src/common/HTTPRequest.h
+	src/libraries/luahttps/src/common/HTTPS.cpp
+	src/libraries/luahttps/src/common/HTTPS.h
+	src/libraries/luahttps/src/common/HTTPSClient.cpp
+	src/libraries/luahttps/src/common/HTTPSClient.h
+	src/libraries/luahttps/src/common/PlaintextConnection.cpp
+	src/libraries/luahttps/src/common/PlaintextConnection.h
+	src/libraries/luahttps/src/generic/CurlClient.cpp
+	src/libraries/luahttps/src/generic/CurlClient.h
+	src/libraries/luahttps/src/generic/OpenSSLConnection.cpp
+	src/libraries/luahttps/src/generic/OpenSSLConnection.h
+	src/libraries/luahttps/src/lua/main.cpp
+	src/libraries/luahttps/src/windows/SChannelConnection.cpp
+	src/libraries/luahttps/src/windows/SChannelConnection.h
+	src/libraries/luahttps/src/windows/WinINetClient.cpp
+	src/libraries/luahttps/src/windows/WinINetClient.h
+)
+target_link_libraries(love_3p_luahttps ${LOVE_LUA_LIBRARY})
 
 #
 # lz4
