@@ -1602,6 +1602,27 @@ add_library(love_3p_luahttps
 )
 target_link_libraries(love_3p_luahttps ${LOVE_LUA_LIBRARY})
 
+if (APPLE)
+	target_sources(love_3p_luahttps PRIVATE
+		src/libraries/luahttps/src/apple/NSURLClient.mm
+		src/libraries/luahttps/src/apple/NSURLClient.h
+	)
+	target_compile_options(love_3p_luahttps PRIVATE -fobjc-arc)
+endif()
+
+if(MSVC)
+	target_link_libraries(love_3p_luahttps
+		ws2_32
+		secur32
+	)
+
+	if(NOT CMAKE_SYSTEM_NAME STREQUAL "WindowsStore")
+		target_link_libraries(love_3p_luahttps
+			wininet
+		)
+	endif()
+endif()
+
 #
 # lz4
 #
