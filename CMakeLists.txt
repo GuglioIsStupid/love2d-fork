@@ -1574,7 +1574,7 @@ target_link_libraries(love_3p_lua53 ${LOVE_LUA_LIBRARY})
 # Lua HTTPS
 #
 
-add_library(love_3p_luahttps
+set(LOVE_SRC_3P_LUAHTTPS
 	# These are platform-dependent but have ifdef guards to make sure they only
 	# compile on supported platforms.
 	src/libraries/luahttps/src/android/AndroidClient.cpp
@@ -1600,6 +1600,9 @@ add_library(love_3p_luahttps
 	src/libraries/luahttps/src/windows/WinINetClient.cpp
 	src/libraries/luahttps/src/windows/WinINetClient.h
 )
+
+add_library(love_3p_luahttps ${LOVE_SRC_3P_LUAHTTPS})
+
 target_link_libraries(love_3p_luahttps ${LOVE_LUA_LIBRARY})
 
 if (APPLE)
